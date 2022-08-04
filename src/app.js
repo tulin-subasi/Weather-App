@@ -33,7 +33,10 @@ day.innerHTML = `${currentDay} ${currentHour}:${currentMinutes}`;
 Add a search engine, when searching for a city (i.e. Paris), display the city name on the page after the user submits the form.
 */
 
+let frm = document.querySelector("#form-search");
+
 let cityInput = document.querySelector("#search-btn");
+console.log(cityInput);
 
 function showCityTemp(response) {
   console.log(response.data.main.temp);
@@ -53,7 +56,7 @@ function writeCity(input) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${input}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(showCityTemp);
 }
-
+frm.addEventListener("submit", writeCity);
 cityInput.addEventListener("click", writeCity);
 
 /*
@@ -116,7 +119,7 @@ function currentPosition(position) {
   let apiKey = "29adcafc0b9fced5934f93a3b452d5af";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(showTemp);
-  console.log(position.name);
+  //console.log(position.name);
 
   //let loc = new google.maps.LatLng(lat, lon);
 }

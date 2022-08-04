@@ -3,7 +3,6 @@
 
 <head>
     <meta charset="UTF-8">
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -28,12 +27,13 @@
                             <input type="search" name="search" id="search" placeholder="Search City"
                                 class="form-control" autocomplete="off">
                     </div>
-                    <div class="col-12">
-                        <form class="frm-btn">
+                    <div class="col-12" id="col">
+                        <form class="frm-btn" placeholder="Search city">
                             <button id="search-btn" type="button" class="btn btn-primary">Search</button>
-                            <button id="current" class="btn">Current Location</button>
+
                             <!--<button type="button" class="btn btn-secondary">Current Location</button> -->
                         </form>
+                        <button id="current" class="btn">Current Location</button>
                     </div>
                 </div>
             </div>
@@ -142,12 +142,9 @@
 
             </div>
 
-            <a href="https://github.com/tulin-subasi/Weather-App">Open-source code by tulin-subasi</a>
+
 
     </section>
-
-
-
     <script src="src/app.js"></script>
 </body>
 
