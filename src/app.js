@@ -38,12 +38,21 @@ let frm = document.querySelector("#form-search");
 let cityInput = document.querySelector("#search-btn");
 //console.log(cityInput);
 
+let hum = document.querySelector("#humidity");
+let val = document.querySelector("#val");
+let wind = document.querySelector("#wind");
+let img = document.querySelector("#image");
+
 function showCityTemp(response) {
   celsius = Math.floor(response.data.main.temp);
-  //console.log(response.data.main.temp);
+  console.log(response.data);
   let temperature = celsius;
   let heading = document.querySelector("h1");
   heading.innerHTML = `${temperature}`;
+  hum.innerHTML = `Humidity: ${response.data.main.humidity}%`;
+  wind.innerHTML = `Wind: ${response.data.wind.speed} km/h`;
+  val.innerHTML = `${response.data.weather[0].main}`;
+  img.setAttribute("src", `src/img/${response.data.weather[0].main}.png`);
 }
 
 function writeCity(input) {
@@ -106,6 +115,9 @@ function showTemp(response) {
   heading.innerHTML = `${temperature}`;
 
   let currentCity = document.querySelector("#location");
+  hum.innerHTML = `Humidity: ${response.data.main.humidity}%`;
+  wind.innerHTML = `Wind: ${response.data.wind.speed} km/h`;
+  val.innerHTML = `${response.data.weather[0].main}`;
 
   //console.log(response.data.name);
   currentCity.innerHTML = `${response.data.name}`;
