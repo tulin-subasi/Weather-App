@@ -36,11 +36,12 @@ Add a search engine, when searching for a city (i.e. Paris), display the city na
 let frm = document.querySelector("#form-search");
 
 let cityInput = document.querySelector("#search-btn");
-console.log(cityInput);
+//console.log(cityInput);
 
 function showCityTemp(response) {
-  console.log(response.data.main.temp);
-  let temperature = Math.floor(response.data.main.temp);
+  celsius = Math.floor(response.data.main.temp);
+  //console.log(response.data.main.temp);
+  let temperature = celsius;
   let heading = document.querySelector("h1");
   heading.innerHTML = `${temperature}`;
 }
@@ -68,18 +69,17 @@ let temperature = document.querySelector("#temp");
 let cel = document.querySelector("#C");
 let fah = document.querySelector("#F");
 
-let celsius = 33;
+let celsius = null;
 
 function C(temp) {
   temp.preventDefault();
-
   temperature.innerHTML = `${celsius}`;
 }
 
 function F(temp) {
   temp.preventDefault();
   let fahrenheit = (`${celsius}` * 9) / 5 + 32;
-  temperature.innerHTML = `${fahrenheit}`;
+  temperature.innerHTML = `${Math.floor(fahrenheit)}`;
 }
 
 cel.addEventListener("click", C);
@@ -100,13 +100,14 @@ let btn = document.querySelector("#current");
 }
 */
 function showTemp(response) {
-  let temperature = Math.floor(response.data.main.temp);
+  celsius = Math.floor(response.data.main.temp);
+  let temperature = celsius;
   let heading = document.querySelector("h1");
   heading.innerHTML = `${temperature}`;
 
   let currentCity = document.querySelector("#location");
 
-  console.log(response.data.name);
+  //console.log(response.data.name);
   currentCity.innerHTML = `${response.data.name}`;
 }
 
