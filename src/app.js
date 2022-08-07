@@ -91,8 +91,6 @@ to get your GPS coordinates and display and the city
 and current temperature using the OpenWeather API.
 */
 
-let axios = require("axios").default;
-
 let btn = document.querySelector("#current");
 
 /* function location(position) {
