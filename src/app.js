@@ -51,7 +51,7 @@ function showCityTemp(response) {
   heading.innerHTML = `${temperature}`;
   hum.innerHTML = `Humidity: ${response.data.main.humidity}%`;
   wind.innerHTML = `Wind: ${response.data.wind.speed} km/h`;
-  val.innerHTML = `${response.data.weather[0].main}`;
+  val.innerHTML = `${response.data.weather[0].description}`;
   img.setAttribute("src", `src/img/${response.data.weather[0].main}.png`);
 }
 

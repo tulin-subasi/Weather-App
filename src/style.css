@@ -144,6 +144,10 @@ p {
   margin-block-end: 0em;
 }
 
+.wind:first-letter {
+  text-transform: capitalize;
+}
+
 .day_time {
   margin-block-start: 0em;
   margin-block-end: 0em;
