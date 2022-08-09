@@ -35,7 +35,7 @@ body {
 }
 
 .btn {
-  width: 47%;
+  width: 100%;
   margin: 16px 8px 16px 0px;
   background-color: rgb(2, 14, 85);
   color: #ffffff;
@@ -92,7 +92,7 @@ body {
   margin: 24px 48px;
   text-align: right;
   top: 18px;
-  right: -20px;
+  right: -28px;
 }
 
 .location {
@@ -106,17 +106,23 @@ body {
   width: 50px;
 }
 
-.other_days {
+.weather-forecast {
   display: flex;
   flex-direction: row;
   padding: 8px 0px;
 }
 
 .other {
-  margin: 11px;
+  margin: 8px;
+  padding-top: 8px;
+  border-radius: 4px;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.other:hover {
+  background-color: #ffffff8b;
 }
 
 .c {
@@ -139,6 +145,7 @@ p {
 }
 
 .wind {
+  font-size: 12px;
   margin: 0;
   margin-block-start: 0em;
   margin-block-end: 0em;
@@ -158,4 +165,9 @@ p {
   display: flex;
   flex-direction: row;
   width: 100%;
+}
+
+.day {
+  font-size: 14px;
+  font-weight: 600;
 }
