@@ -66,6 +66,13 @@ displayForecast();
 Add a search engine, when searching for a city (i.e. Paris), display the city name on the page after the user submits the form.
 */
 
+function getForecast(coordinates) {
+  console.log(coordinates);
+  let apiKey = "29adcafc0b9fced5934f93a3b452d5af";
+  let apiUrl = `https://api.openweathermap.org/data/3.0/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  console.log(apiUrl);
+}
+
 let frm = document.querySelector("#form-search");
 
 let cityInput = document.querySelector("#search-btn");
@@ -86,6 +93,8 @@ function showCityTemp(response) {
   wind.innerHTML = `Wind: ${response.data.wind.speed} km/h`;
   val.innerHTML = `${response.data.weather[0].description}`;
   img.setAttribute("src", `src/img/${response.data.weather[0].main}.png`);
+
+  getForecast(response.data.coord);
 }
 
 function writeCity(input) {
@@ -155,10 +164,11 @@ function showTemp(response) {
 
   //console.log(response.data.name);
   currentCity.innerHTML = `${response.data.name}`;
+  getForecast(response.data.coords);
 }
 
 function currentPosition(position) {
-  console.log(position);
+  //console.log(position);
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
   let apiKey = "29adcafc0b9fced5934f93a3b452d5af";
