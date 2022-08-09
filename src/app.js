@@ -29,6 +29,39 @@ if (currentMinutes < 10) {
 day.innerHTML = `${currentDay} ${currentHour}:${currentMinutes}`;
 
 /*
+Add Weather Forecast Function
+*/
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+  let forecastHTML = `<div class="row justify-content-start">`;
+  let forecastDay = ["Fri", "Sat", "Sun"];
+
+  forecastDay.forEach(function (days) {
+    forecastHTML =
+      forecastHTML +
+      `
+                        <div class="other col-2">
+                            <p class="day">
+                                ${days}
+                            </p>
+                            <img class="temp_img" src="src/img/sunny_2_2.png" alt="">
+                            <div class="c">
+                                <p class="temp1">
+                                    26°
+                                </p>
+                                <p class="temp2">
+                                    24°
+                                </p>
+                            </div>
+                        </div>
+  `;
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+displayForecast();
+/*
 🕵️‍♀️Feature #2
 Add a search engine, when searching for a city (i.e. Paris), display the city name on the page after the user submits the form.
 */
