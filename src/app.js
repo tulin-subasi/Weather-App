@@ -117,7 +117,8 @@ function showTemp(response) {
   let currentCity = document.querySelector("#location");
   hum.innerHTML = `Humidity: ${response.data.main.humidity}%`;
   wind.innerHTML = `Wind: ${response.data.wind.speed} km/h`;
-  val.innerHTML = `${response.data.weather[0].main}`;
+  val.innerHTML = `${response.data.weather[0].description}`;
+  img.setAttribute("src", `src/img/${response.data.weather[0].main}.png`);
 
   //console.log(response.data.name);
   currentCity.innerHTML = `${response.data.name}`;
