@@ -136,26 +136,6 @@ cityInput.addEventListener("click", writeCity);
 🙀Bonus Feature
 Display a fake temperature (i.e 17) in Celsius and add a link to convert it to Fahrenheit. When clicking on it, it should convert the temperature to Fahrenheit. When clicking on Celsius, it should convert it back to Celsius.
 */
-let temperature = document.querySelector("#temp");
-
-let cel = document.querySelector("#C");
-let fah = document.querySelector("#F");
-
-let celsius = null;
-
-function C(temp) {
-  temp.preventDefault();
-  temperature.innerHTML = `${celsius}`;
-}
-
-function F(temp) {
-  temp.preventDefault();
-  let fahrenheit = (`${celsius}` * 9) / 5 + 32;
-  temperature.innerHTML = `${Math.floor(fahrenheit)}`;
-}
-
-cel.addEventListener("click", C);
-fah.addEventListener("click", F);
 
 /*Add a Current Location button. 
 When clicking on it, it uses the Geolocation API 
@@ -183,9 +163,9 @@ function showTemp(response) {
   val.innerHTML = `${response.data.weather[0].description}`;
   img.setAttribute("src", `src/img/${response.data.weather[0].main}.png`);
 
-  //console.log(response.data.name);
+  //console.log(response.data);
   currentCity.innerHTML = `${response.data.name}`;
-  getForecast(response.data.coords);
+  getForecast(response.data.coord);
 }
 
 function currentPosition(position) {
