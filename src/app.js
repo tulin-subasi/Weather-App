@@ -28,6 +28,26 @@ if (currentMinutes < 10) {
 }
 day.innerHTML = `${currentDay} ${currentHour}:${currentMinutes}`;
 
+/*--- */
+
+let apiKey = "29adcafc0b9fced5934f93a3b452d5af";
+let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=istanbul&appid=${apiKey}&units=metric`;
+axios.get(apiUrl).then(defaultTemp);
+function defaultTemp(response) {
+  console.log(response.data);
+  let hum = document.querySelector("#humidity");
+  let val = document.querySelector("#val");
+  let wind = document.querySelector("#wind");
+  let img = document.querySelector("#image");
+  let heading = document.querySelector("h1");
+  heading.innerHTML = `${Math.floor(response.data.main.temp)}`;
+  hum.innerHTML = `Humidity: ${response.data.main.humidity}%`;
+  wind.innerHTML = `Wind: ${response.data.wind.speed} km/h`;
+  val.innerHTML = `${response.data.weather[0].description}`;
+  img.setAttribute("src", `src/img/${response.data.weather[0].main}.png`);
+}
+
+/*--- */
 function formatDay(timestamp) {
   let date = new Date(timestamp * 1000);
   let day = date.getDay();
