@@ -28,34 +28,53 @@ if (currentMinutes < 10) {
 }
 day.innerHTML = `${currentDay} ${currentHour}:${currentMinutes}`;
 
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+
+  return days[day];
+}
+
 /*
 Add Weather Forecast Function
 */
 function displayForecast(response) {
-  console.log(response.data.daily);
+  let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = `<div class="row justify-content-start">`;
-  let forecastDay = ["Fri", "Sat", "Sun"];
 
-  forecastDay.forEach(function (days) {
-    forecastHTML =
-      forecastHTML +
-      `
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 5) {
+      forecastHTML =
+        forecastHTML +
+        `
                         <div class="other col-2">
                             <p class="day">
-                                ${days}
+                                ${formatDay(forecastDay.dt)}
                             </p>
-                            <img class="temp_img" src="src/img/sunny_2_2.png" alt="">
+                            <img class="temp_img" src="src/img/${
+                              forecastDay.weather[0].main
+                            }.png" alt="">
                             <div class="c">
                                 <p class="temp1">
-                                    26°
+                                    ${Math.floor(forecastDay.temp.max)}°
                                 </p>
                                 <p class="temp2">
-                                    24°
+                                    ${Math.floor(forecastDay.temp.min)}°
                                 </p>
                             </div>
                         </div>
   `;
+    }
   });
 
   forecastHTML = forecastHTML + `</div>`;
