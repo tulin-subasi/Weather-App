@@ -34,7 +34,7 @@ let apiKey = "29adcafc0b9fced5934f93a3b452d5af";
 let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=istanbul&appid=${apiKey}&units=metric`;
 axios.get(apiUrl).then(defaultTemp);
 function defaultTemp(response) {
-  console.log(response.data);
+  //console.log(response.data);
   let hum = document.querySelector("#humidity");
   let val = document.querySelector("#val");
   let wind = document.querySelector("#wind");
@@ -45,6 +45,7 @@ function defaultTemp(response) {
   wind.innerHTML = `Wind: ${response.data.wind.speed} km/h`;
   val.innerHTML = `${response.data.weather[0].description}`;
   img.setAttribute("src", `src/img/${response.data.weather[0].main}.png`);
+  getForecast(response.data.coord);
 }
 
 /*--- */
