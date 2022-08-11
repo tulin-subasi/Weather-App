@@ -34,7 +34,7 @@ let apiKey = "29adcafc0b9fced5934f93a3b452d5af";
 let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=istanbul&appid=${apiKey}&units=metric`;
 axios.get(apiUrl).then(defaultTemp);
 function defaultTemp(response) {
-  //console.log(response.data);
+  console.log(response.data);
   let hum = document.querySelector("#humidity");
   let val = document.querySelector("#val");
   let wind = document.querySelector("#wind");
@@ -44,7 +44,7 @@ function defaultTemp(response) {
   hum.innerHTML = `Humidity: ${response.data.main.humidity}%`;
   wind.innerHTML = `Wind: ${response.data.wind.speed} km/h`;
   val.innerHTML = `${response.data.weather[0].description}`;
-  img.setAttribute("src", `src/img/${response.data.weather[0].main}.png`);
+  img.setAttribute("src", `src/img/${response.data.weather[0].icon}.png`);
   getForecast(response.data.coord);
 }
 
@@ -74,7 +74,7 @@ function displayForecast(response) {
   let forecastHTML = `<div class="row justify-content-start">`;
 
   forecast.forEach(function (forecastDay, index) {
-    if (index < 5) {
+    if ((index > 0) & (index < 6)) {
       forecastHTML =
         forecastHTML +
         `
@@ -83,7 +83,7 @@ function displayForecast(response) {
                                 ${formatDay(forecastDay.dt)}
                             </p>
                             <img class="temp_img" src="src/img/${
-                              forecastDay.weather[0].main
+                              forecastDay.weather[0].icon
                             }.png" alt="">
                             <div class="c">
                                 <p class="temp1">
@@ -134,7 +134,7 @@ function showCityTemp(response) {
   hum.innerHTML = `Humidity: ${response.data.main.humidity}%`;
   wind.innerHTML = `Wind: ${response.data.wind.speed} km/h`;
   val.innerHTML = `${response.data.weather[0].description}`;
-  img.setAttribute("src", `src/img/${response.data.weather[0].main}.png`);
+  img.setAttribute("src", `src/img/${response.data.weather[0].icon}.png`);
 
   getForecast(response.data.coord);
 }
@@ -182,7 +182,7 @@ function showTemp(response) {
   hum.innerHTML = `Humidity: ${response.data.main.humidity}%`;
   wind.innerHTML = `Wind: ${response.data.wind.speed} km/h`;
   val.innerHTML = `${response.data.weather[0].description}`;
-  img.setAttribute("src", `src/img/${response.data.weather[0].main}.png`);
+  img.setAttribute("src", `src/img/${response.data.weather[0].icon}.png`);
 
   //console.log(response.data);
   currentCity.innerHTML = `${response.data.name}`;
